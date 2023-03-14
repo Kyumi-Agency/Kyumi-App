@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Kyumi-App",
+    "slug": "Kyumi-App",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "Kyumi-App"
+}
