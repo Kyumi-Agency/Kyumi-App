@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Missing_Finding from "./Navigation/Missing_Finding/Missing_Finding";
+import Conseils from "./Navigation/Conseils/Conseils";
 
 const tab = createBottomTabNavigator();
 
@@ -24,6 +25,7 @@ function App() {
         <tab.Navigator>
             <tab.Screen name={"Home"} component={Missing_Finding} />
             <tab.Screen name={"TestPage"} component={Test} />
+            <tab.Screen name={"Conseils"} component={Conseils} />
         </tab.Navigator>
       </NavigationContainer>
   );
