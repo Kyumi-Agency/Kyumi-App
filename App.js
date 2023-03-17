@@ -6,26 +6,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import Missing_Finding from "./Navigation/Missing_Finding/Missing_Finding";
 import Conseils from "./Navigation/Conseils/Conseils";
+import Home from "./Navigation/Home/Home";
+import Map from "./Navigation/Map/Map";
 
 const tab = createBottomTabNavigator();
 
 // const Stack = createNativeStackNavigator();
 
-function Test(){
-    return(
-        <View>
-            <Text>Test Page</Text>
-        </View>
-    )
-}
-
 function App() {
   return (
       <NavigationContainer>
         <tab.Navigator>
-            <tab.Screen name={"Home"} component={Missing_Finding} />
-            <tab.Screen name={"TestPage"} component={Test} />
+            <tab.Screen name={"Home"} component={Home} />
+            <tab.Screen name={"Missing_Finding"} component={Missing_Finding} />
             <tab.Screen name={"Conseils"} component={Conseils} />
+            <tab.Screen name={"Map"} component={Map} />
         </tab.Navigator>
       </NavigationContainer>
   );

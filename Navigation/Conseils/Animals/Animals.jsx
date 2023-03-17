@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {View, Text, Image} from 'react-native';
+import "./Animals.css";
 const Animals = () => {
     const animalsData = [
         {
@@ -30,8 +31,10 @@ const Animals = () => {
             {animalsData.map((animals, index) => {
                 return (
                     <View key={index}>
-                        <Text>{animals.name}</Text>
-                        <Image source={{uri: animals.image}} style={{width: 100, height: 100}} />
+                        <div className="container">
+                            <Text>{animals.name}</Text>
+                            <Image source={{uri: animals.image}} style={{width: 100, height: 100}} />
+                        </div>
                     </View>
                 );
             })}
