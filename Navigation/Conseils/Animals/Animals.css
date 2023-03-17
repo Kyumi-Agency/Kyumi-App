@@ -1,0 +1,9 @@
+.container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: url("https://www.w3schools.com/howto/img_avatar.png") no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    color: white;
+}
