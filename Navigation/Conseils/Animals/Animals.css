@@ -1,9 +1,32 @@
 .container {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    background: url("https://www.w3schools.com/howto/img_avatar.png") no-repeat center center;
-    background-size: cover;
-    text-align: center;
-    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    width: 300px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+    max-width: 100%;
+}
+
+h3 {
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
