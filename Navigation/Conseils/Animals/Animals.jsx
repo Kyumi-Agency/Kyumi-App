@@ -28,16 +28,18 @@ const Animals = () => {
 
     return (
         <View>
+            <div className="container">
             {animalsData.map((animals, index) => {
                 return (
                     <View key={index}>
-                        <div className="container">
-                            <Text>{animals.name}</Text>
-                            <Image source={{uri: animals.image}} style={{width: 100, height: 100}} />
+                        <div className="card">
+                            <h3>{animals.name}</h3>
+                            <img src={animals.image} />
                         </div>
                     </View>
                 );
             })}
+            </div>
         </View>
     );
 };

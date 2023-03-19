@@ -4,12 +4,14 @@ import "./Categories.css";
 const Categories = () => {
     return (
         <View>
-            <Text>Categories</Text>
-            <div className="navbar">
-                <a href="#" className="active">Home</a>
-                <a href="#">News</a>
-                <a href="#">Contact</a>
-            </div>
+            <nav className="vertical-nav">
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
         </View>
     );
 };

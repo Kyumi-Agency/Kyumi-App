@@ -1,0 +1,10 @@
+.more-details {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+    color: #258325;
+}
+.more-details span{
+    color: black;
+}
