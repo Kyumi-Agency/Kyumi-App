@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {View, Text, Image} from 'react-native';
-import "./Animals.css";
+import { View, Image, Text, StyleSheet } from 'react-native';
+
 const Animals = () => {
     const animalsData = [
         {
@@ -27,20 +27,47 @@ const Animals = () => {
     ];
 
     return (
-        <View>
-            <div className="container">
-            {animalsData.map((animals, index) => {
-                return (
-                    <View key={index}>
-                        <div className="card">
-                            <h3>{animals.name}</h3>
-                            <img src={animals.image} />
-                        </div>
-                    </View>
-                );
-            })}
-            </div>
+        <View style={styles.animalsContainer}>
+            {animalsData.map((animal) => (
+                <View key={animal.id} style={styles.animalCard}>
+                    <Image source={{ uri: animal.image }} style={styles.animalImage} />
+                    <Text style={styles.animalName}>{animal.name}</Text>
+                </View>
+            ))}
         </View>
     );
 };
+const styles = StyleSheet.create({
+    animalsContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        paddingHorizontal: 10,
+        paddingTop: 10,
+        backgroundColor: '#f1f1f1',
+    },
+    animalCard: {
+        width: '48%',
+        height: 250,
+        marginBottom: 10,
+        borderRadius: 10,
+        backgroundColor: 'rgba(193,143,106,0.71)',
+        overflow: 'hidden',
+        alignItems: 'center',
+    },
+    animalImage: {
+        width: '100%',
+        height: '85%',
+    },
+    animalName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        textAlign: 'center',
+        color: '#fff',
+    },
+});
+
 export default Animals;
