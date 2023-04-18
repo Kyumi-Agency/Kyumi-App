@@ -19,7 +19,7 @@ function App() {
                 let iconName;
                 if (route.name === 'Home') {
                     iconName = focused ? 'ios-home' : 'ios-home-outline';
-                } else if (route.name === 'Missing_Finding') {
+                } else if (route.name === 'Missing Finding') {
                     iconName = focused ? 'ios-paw' : 'ios-paw-outline';
                 }
                 else if (route.name === 'Conseils') {
@@ -28,12 +28,14 @@ function App() {
                 else if (route.name === 'Map') {
                     iconName = focused ? 'ios-locate' : 'ios-locate-outline';
                 }
-                return <Ionicons name={iconName} size={size} color={color} />;
+                return <Ionicons name={iconName} size={size} color={focused ? '#c18f6a' : '#8e8e8f'} />;
             },
+            headerShown: false,
+            tabBarActiveTintColor: '#c18f6a',
         })}
         >
             <tab.Screen name={"Home"} component={Home} />
-            <tab.Screen name={"Missing_Finding"} component={Missing_Finding} />
+            <tab.Screen name={"Missing Finding"} component={Missing_Finding} />
             <tab.Screen name={"Conseils"} component={Conseils} />
             <tab.Screen name={"Map"} component={Map} />
         </tab.Navigator>

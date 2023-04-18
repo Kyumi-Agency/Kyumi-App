@@ -41,6 +41,9 @@ target 'KyumiApp' do
   use_expo_modules!
   config = use_native_modules!
 
+  pod 'Mapbox-iOS-SDK', '~> 6.0'
+  pod 'react-native-mapbox-gl', :path => '../node_modules/react-native-mapbox-gl'
+
   use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
   use_frameworks! :linkage => ENV['USE_FRAMEWORKS'].to_sym if ENV['USE_FRAMEWORKS']
 

@@ -1,17 +1,27 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
-import "./More_Details.css";
+import {View, Text, StyleSheet} from 'react-native';
 
 const More_Details = () => {
     return (
-        <View>
-            <div className="more-details">
-                <h2>More details</h2>
-                <p>Color: <span>Blue</span></p>
-                <p>Weight: <span>2.5 kg</span></p>
-                <p>Vaccinated: <span>Yes</span></p>
-            </div>
+        <View style={styles.moreDetails}>
+            <Text style={styles.moreDetails}>More details</Text>
+            <Text style={styles.moreDetails}>Color: <Text style={styles.moreDetailsText}>Blue</Text></Text>
+            <Text style={styles.moreDetails}>Weight: <Text style={styles.moreDetailsText}>2.5 kg</Text></Text>
+            <Text style={styles.moreDetails}>Vaccinated: <Text style={styles.moreDetailsText}>Yes</Text></Text>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    moreDetails: {
+        width: '80%',
+        maxWidth: 500,
+        marginHorizontal: 'auto',
+        padding: 10,
+        color: '#258325',
+    },
+    moreDetailsText: {
+        color: 'black',
+    },
+});
 export default More_Details;

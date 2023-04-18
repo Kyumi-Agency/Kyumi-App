@@ -1,22 +1,15 @@
 import React from "react";
-import "./Missing_Finding.css";
-import {Text, View, ScrollView} from "react-native-web";
-import { Link } from '@react-navigation/native';
+import {Text, View, ScrollView, StyleSheet} from "react-native";
 import Animals_Details from "../Animals_Details/Animals_Details";
-
-function Missing_Finding({initialName}) {
-    const [name, setName] = React.useState(initialName);
-
+import externalStyle from "../../style/externalStyle";
+const Missing_Finding = () => {
     return (
-        <ScrollView>
+        <ScrollView style={externalStyle.center}>
             <Text>Missing_Finding</Text>
-            <br/>
-
-            {/*Faire marcher des Link avec route*/}
             <Text>Voici le detail d'un animal : </Text>
-            <Animals_Details />
+            <Animals_Details/>
         </ScrollView>
     );
-}
+};
 
 export default Missing_Finding;
