@@ -1,32 +1,52 @@
-import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
 const Description_Details = () => {
+    const [showMore, setShowMore] = useState(false);
+    const toggleShowMore = () => {
+        setShowMore(!showMore);
+    };
+
+    const [liked, setLiked] = useState(false);
+    const handleLikePress = () => {
+        setLiked(!liked);
+    };
     return (
-        <View>
+        <View style={styles.container}>
             <View style={styles.profile}>
-                <View style={styles.info}>
                     <View style={styles.name}>
-                        <Text>Jean</Text>
-                        <Image source={{uri: 'https://static.thenounproject.com/png/3682928-200.png'}} style={styles.profileImg} />
+                        <Text style={styles.nameTxt}>Jean</Text>
+                        <Image source={{uri: 'https://static.thenounproject.com/png/3682928-200.png'}} style={styles.nameImg} />
+                        <View style={styles.likeContainer}>
+                            <TouchableOpacity onPress={handleLikePress}>
+                                <Image
+                                    source={{  uri: liked ? 'https://cdn-icons-png.flaticon.com/512/1077/1077086.png' : 'https://cdn-icons-png.flaticon.com/512/1077/1077035.png' }}
+                                    style={styles.like}
+                                />
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <Text style={styles.age}>Age : 25 ans</Text>
-                    <Text style={styles.race}>Race : </Text>
-                </View>
-                <View style={styles.like}>
-                    <Image source={{uri: 'https://static.vecteezy.com/system/resources/previews/001/188/163/original/heart-png.png'}} style={styles.likeImg} />
-                </View>
+                    <Text style={styles.txt}>2 ans</Text>
+                    <Text style={styles.txt}>Race</Text>
+
             </View>
             <View style={styles.description}>
-                <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nullam auctor, nisl eget ultricies tincidunt, nunc nisl
-                    lacinia nisl, nec ultricies nunc nisl vel mauris. Sed
-                    tincidunt, nisl eget ultricies tincidunt, nunc nisl lacinia
-                    nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt,
-                    nisl eget ultricies tincidunt, nunc nisl lacinia nisl, nec
-                    ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget
+                <Text numberOfLines={showMore ? undefined : 4}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc
+                    nisl lacinia nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget ultricies tincidunt, nunc
+                    nisl lacinia nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget ultricies tincidunt, nunc
+                    nisl lacinia nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget
                 </Text>
+                {!showMore && (
+                    <TouchableOpacity onPress={toggleShowMore} style={styles.seeMoreButton}>
+                        <Text style={styles.seeMoreButtonText}>Voir plus</Text>
+                    </TouchableOpacity>
+                )}
+                {showMore && (
+                    <TouchableOpacity onPress={toggleShowMore} style={styles.seeMoreButton}>
+                        <Text style={styles.seeMoreButtonText}>Voir moins</Text>
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     );
@@ -34,51 +54,57 @@ const Description_Details = () => {
 
 
 const styles = StyleSheet.create({
-    profile: {
-        width: '80%',
-        maxWidth: 500,
-        margin: 'auto',
-        borderRadius: 20,
-        backgroundColor: '#c18f6a',
+    container: {
         display: 'flex',
-        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: 10,
-        color: 'white',
+        top: -40,
     },
-    like: {
-        width: 30,
-        height: 30,
-    },
-    info: {
+    profile: {
         display: 'flex',
-        flexDirection: 'column',
+        width: '80%',
+        borderRadius: 15,
+        backgroundColor: '#c18f6a',
+        padding: 15,
     },
     name: {
         display: 'flex',
-        alignItems: 'center',
+        flexDirection: 'row',
         fontSize: 20,
     },
+    nameTxt: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
+    },
+    likeContainer: {
+        flex: 1,
+        alignItems: 'flex-end',
+    },
+    like: {
+        width: 25,
+        height: 25,
+    },
     nameImg: {
-        width: 30,
-        height: 30,
-        marginLeft: 10,
+        width: 20,
+        height: 20,
+        marginLeft : 10,
     },
-    nameSpan: {
-        marginLeft: 10,
-    },
-    age: {
+    txt: {
         fontSize: 16,
-    },
-    race: {
-        fontSize: 16,
+        color: 'white',
+        fontStyle: 'italic',
     },
     description: {
         width: '80%',
-        maxWidth: 500,
-        margin: 'auto',
         padding: 10,
+    },
+    seeMoreButton: {
+        marginTop: 10,
+    },
+    seeMoreButtonText: {
+        color: '#447234',
+        fontWeight: 'bold',
+
     },
 });
 

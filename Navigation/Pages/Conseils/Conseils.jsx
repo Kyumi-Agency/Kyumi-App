@@ -8,7 +8,7 @@ const Conseils = ({navigation}) => {
         <ScrollView
         style={externalStyle.bg}
         >
-            <Animals onPress={() => navigation.navigate("AnimalDetailsPage")}/>
+            <Animals />
             <Cares onPress={() => navigation.navigate("AnimalDetailsPage")}/>
         </ScrollView>
     );

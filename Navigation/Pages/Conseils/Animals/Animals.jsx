@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Animals = ({onPress}) => {
+const Animals = () => {
     const animalsData = [
         {
             id: "1",
@@ -25,14 +25,21 @@ const Animals = ({onPress}) => {
         },
 
     ];
+    const [selectedAnimal, setSelectedAnimal] = useState(animalsData[0].id);
 
+    const handleAnimalPress = (animalId) => {
+        setSelectedAnimal(animalId);
+    };
     return (
         <View style={styles.animalsContainer}>
             {animalsData.map((animal) => (
                 <TouchableOpacity
-                    onPress={onPress}
+                    onPress={() => handleAnimalPress(animal.id)}
                     key={animal.id}
-                    style={styles.animalCard}
+                    style={[
+                        styles.animalCard,
+                        { backgroundColor: selectedAnimal === animal.id ? '#EB9026' : '#EBCAA4' },
+                    ]}
                 >
                     <View style={styles.animalContent}>
                         <Text style={styles.animalName}>{animal.name}</Text>
@@ -54,14 +61,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingHorizontal: 10,
         paddingTop: 30,
-        backgroundColor: '#f1f1f1',
     },
     animalCard: {
         width: '44%',
         height: 100,
         marginBottom: 20,
         borderRadius: 10,
-        backgroundColor: 'rgba(117,77,65,0.71)',
+        backgroundColor: '#EBCAA4',
     },
     animalContent: {
         display: 'flex',
