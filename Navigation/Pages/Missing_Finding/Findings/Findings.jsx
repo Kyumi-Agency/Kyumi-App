@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         margin: 30,
 
         borderRadius: 20,
-        borderWidth: 10,
+        borderWidth: 8,
         borderColor: 'brown',
     },
 
@@ -194,6 +194,13 @@ const styles = StyleSheet.create({
         height: screenHeight * 0.1,
         color: 'black',
     },
+    buttonText: {
+        color: 'white',
+        zIndex: 1,
+        position: 'absolute',
+        textAlign: 'center',
+        fontSize: 20,
+    },
     modalText: {
         color: 'white',
         zIndex: 1,
@@ -217,13 +224,6 @@ const styles = StyleSheet.create({
         fontSize: 30,
         opacity: 0.4,
     },
-    buttonText: {
-        color: 'white',
-        zIndex: 1,
-        position: 'absolute',
-        textAlign: 'center',
-        fontSize: 20,
-    }
 });
 
 export default Findings;

@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start', // permet de centrer le texte à gauche
         fontSize: 25,
         fontWeight: 'bold',
-        paddingVertical: 35,
+        marginTop: 35,
         paddingHorizontal: 12,
         color: '#fff',
     },
