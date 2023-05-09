@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingHorizontal: 10,
         paddingTop: 30,
-        backgroundColor: '#f1f1f1',
+        //backgroundColor: '#f1f1f1',
     },
     animalCard: {
         width: '30%',

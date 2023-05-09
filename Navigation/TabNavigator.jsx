@@ -30,10 +30,10 @@ const TabNavigator = () => {
                         else if (route.name === 'Map') {
                             iconName = focused ? 'ios-locate' : 'ios-locate-outline';
                         }
-                        return <Ionicons name={iconName} size={size} color={focused ? '#c18f6a' : '#8e8e8f'} />;
+                        return <Ionicons name={iconName} size={size} color={focused ? '#eb9026' : '#8e8e8f'} />;
                     },
                     headerShown: false,
-                    tabBarActiveTintColor: '#c18f6a',
+                    tabBarActiveTintColor: '#eb9026',
                 })}
             >
                 <Tab.Screen name={"Home"} component={HomeStack} />

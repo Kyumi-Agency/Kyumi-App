@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 
-const temp = 'https://www.leparisien.fr/resizer/fGXimQvLycC2XjTOb9nran3rDcU=/1248x782/filters:focal(1184x745:1194x755)/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/NJE5TPKX7NDY3AL7MWIJJEXZOA.jpg';
+const temp = 'https://images.ladepeche.fr/api/v1/images/view/63600c1986a82e7a5a29be4b/large/image.jpg?v=2';
 const Img_Details = () => {
     return (
-        <View style={{flex: 1 }}>
+        <View>
             <Image resizeMode={'cover'}
-                   style={{ width: '100%', height: 200} }
+                   style={{ width: '100%', height: 300} }
                    source={{uri: temp}}/>
         </View>
     );

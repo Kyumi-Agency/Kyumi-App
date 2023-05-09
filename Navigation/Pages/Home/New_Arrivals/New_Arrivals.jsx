@@ -1,10 +1,5 @@
 import React from 'react';
-import Carousel from 'react-native-snap-carousel';
-import { View, Text, Dimensions, StyleSheet, Image, TouchableOpacity } from 'react-native';
-
-const SLIDER_WIDTH = Dimensions.get('window').width;
-const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.45);
-const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 2);
+import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
 
 const New_Arrivals = ({ onPress }) => {
     const newData = [
@@ -24,31 +19,26 @@ const New_Arrivals = ({ onPress }) => {
         },
     ];
 
-    const renderItem = ({ item }) => {
-        return (
-            <TouchableOpacity
-                style={styles.itemContainer}
-                onPress={() => onPress(item.id)}
-                key={item.id}
-            >
-                <Image
-                    source={{ uri: item.image }}
-                    style={{ width: '100%', height: '100%', borderRadius: 8 }}
-                    resizeMode="cover"
-                />
-            </TouchableOpacity>
-        );
-    };
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>News Arrivals</Text>
-            <Carousel
-                layout="default"
+            <FlatList
                 data={newData}
-                renderItem={renderItem}
-                sliderWidth={SLIDER_WIDTH}
-                itemWidth={ITEM_WIDTH + 10}
+                keyExtractor={(item) => item.id}
+                horizontal
+                renderItem={({ item }) => (
+                    <TouchableOpacity
+                        style={styles.itemContainer}
+                        onPress={() => onPress(item.id)}
+                        key={item.id}
+                    >
+                        <Image
+                            source={{ uri: item.image }}
+                            style={{ width: '100%', height: '100%', borderRadius: 8 }}
+                            resizeMode="cover"
+                        />
+                    </TouchableOpacity>
+                )}
             />
         </View>
     );
@@ -64,8 +54,9 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     itemContainer: {
-        width: ITEM_WIDTH,
-        height: ITEM_HEIGHT,
+        width: 150,
+        height:350,
+        marginHorizontal: 10,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'white',
@@ -75,11 +66,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
-    },
-    image: {
-        width: '100%',
-        height: '100%',
-        borderRadius: 8,
     },
 });
 
