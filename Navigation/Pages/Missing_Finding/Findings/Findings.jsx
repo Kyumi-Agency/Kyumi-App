@@ -16,7 +16,7 @@ const Findings = ({onPress, type}) => {
     const animatedValue = useRef(new Animated.Value(0)).current;
     // const lastTap = useRef(0);
     const size = type === "missing" ? 30 : -30;
-    const imageType = type === "missing" ? require("D:/Desktop/YNOV2/Kyumi-App/assets/Missing2.jpg") : require("D:/Desktop/YNOV2/Kyumi-App/assets/Finding2.jpg");
+    const imageType = type === "missing" ? require("../../../../assets/Missing2.jpg") : require("../../../../assets/Finding2.jpg");
     const imageModal = type === "missing" ? "https://www.dogstrust.org.uk/images/800x600/assets/2023-04/FosteringHeader.jpg" : "https://cdn.shopify.com/s/files/1/1841/6603/products/Sans_titre_29_600x.jpg?v=1625621607";
     const textModal = type === "missing" ? "Help to find lost pets" : "Find a pet to adopt";
 
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
 
         borderRadius: 20,
         borderWidth: 8,
-        borderColor: 'brown',
+        borderColor: '#c18f6a',
     },
 
     centeredView: {
