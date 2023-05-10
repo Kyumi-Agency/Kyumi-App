@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
 
         borderRadius: 20,
         borderWidth: 8,
-        borderColor: 'brown',
+        borderColor: '#c18f6a',
     },
 
     centeredView: {
