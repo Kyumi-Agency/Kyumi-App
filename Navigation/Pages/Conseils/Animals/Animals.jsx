@@ -1,35 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Animals = () => {
+const Animals = ({ onPress, selectedAnimal }) => {
     const animalsData = [
         {
-            id: "1",
-            name: "cat",
-            image: "https://cdn-icons-png.flaticon.com/512/616/616430.png"
+            id: '1',
+            name: 'cat',
+            image: 'https://cdn-icons-png.flaticon.com/512/616/616430.png',
         },
         {
-            id: "2",
-            name: "dog",
-            image: "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+            id: '2',
+            name: 'dog',
+            image: 'https://cdn-icons-png.flaticon.com/512/616/616408.png',
         },
         {
-            id: "3",
-            name: "bird",
-            image: "https://cdn-icons-png.flaticon.com/512/2129/2129122.png"
+            id: '3',
+            name: 'bird',
+            image: 'https://cdn-icons-png.flaticon.com/512/2129/2129122.png',
         },
         {
-            id: "4",
-            name: "fish",
-            image: "https://cdn-icons-png.flaticon.com/512/2970/2970068.png"
+            id: '4',
+            name: 'fish',
+            image: 'https://cdn-icons-png.flaticon.com/512/2970/2970068.png',
         },
-
     ];
-    const [selectedAnimal, setSelectedAnimal] = useState(animalsData[0].id);
+    const [selectedAnimalId, setSelectedAnimalId] = useState(
+        parseInt(animalsData[0].id),
+    );
 
     const handleAnimalPress = (animalId) => {
-        setSelectedAnimal(animalId);
+        setSelectedAnimalId(parseInt(animalId));
+        onPress(animalId);
     };
+
+    useEffect(() => {
+        setSelectedAnimalId(parseInt(selectedAnimal));
+    }, [selectedAnimal]);
+
+    useEffect(() => {
+        setSelectedAnimalId(parseInt(animalsData[0].id));
+    }, []);
+
     return (
         <View style={styles.animalsContainer}>
             {animalsData.map((animal) => (
@@ -38,15 +49,16 @@ const Animals = () => {
                     key={animal.id}
                     style={[
                         styles.animalCard,
-                        { backgroundColor: selectedAnimal === animal.id ? '#EB9026' : '#EBCAA4' },
-                    ]}
-                >
+                        {
+                            backgroundColor:
+                                selectedAnimalId === parseInt(animal.id)
+                                    ? '#EB9026'
+                                    : '#EBCAA4',
+                        },
+                    ]}>
                     <View style={styles.animalContent}>
                         <Text style={styles.animalName}>{animal.name}</Text>
-                        <Image
-                            source={{ uri: animal.image }}
-                            style={styles.animalImage}
-                        />
+                        <Image source={{ uri: animal.image }} style={styles.animalImage} />
                     </View>
                 </TouchableOpacity>
             ))}
