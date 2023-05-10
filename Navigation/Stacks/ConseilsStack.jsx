@@ -1,11 +1,11 @@
 import React from "react";
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Conseils from "../Pages/Conseils/Conseils";
-import Animals_Details from "../Pages/Animals_Details/Animals_Details";
+import AnimalCaresPage from "../Pages/Conseils/AnimalCaresPage/AnimalCaresPage";
 
 const Stack = createNativeStackNavigator();
 const conseilsScreenName = "ConseilsPage";
-const AnimalDetailsScreenName = "AnimalDetailsPage";
+const AnimalCaresScreenName = "AnimalCaresPage";
 
 const ConseilsStack = () => {
     return (
@@ -17,9 +17,8 @@ const ConseilsStack = () => {
                     };
                 }
             }/>
-            <Stack.Screen name={AnimalDetailsScreenName} component={Animals_Details}/>
+            <Stack.Screen name={AnimalCaresScreenName} component={AnimalCaresPage}/>
         </Stack.Navigator>
     )
 }
-
 export default ConseilsStack;

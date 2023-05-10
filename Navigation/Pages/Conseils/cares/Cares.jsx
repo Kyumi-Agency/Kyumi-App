@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Cares = ({onPress}) => {
+const Cares = ({onPress, animal}) => {
     const CaresData = [
         {
             id: "1",
@@ -35,18 +35,28 @@ const Cares = ({onPress}) => {
         },
 
     ];
+    const animalIds = {
+        1: 'cat',
+        2: 'dog',
+        3: 'bird',
+        4: 'fish',
+    };
+    const handlePress = (care) => {
+        onPress(animalIds[animal], care);
+    };
 
     return (
         <View style={styles.CaresContainer}>
-            {CaresData.map((animal) => (
-                <TouchableOpacity onPress={onPress} key={animal.id} style={styles.animalCard}>
-                    <Image source={{ uri: animal.image }} style={styles.animalImage} />
-                    <Text style={styles.animalName}>{animal.name}</Text>
+            {CaresData.map((care) => (
+                <TouchableOpacity onPress={() => handlePress(care.name)} key={care.id} style={styles.animalCard}>
+                    <Image source={{ uri: care.image }} style={styles.animalImage} />
+                    <Text style={styles.animalName}>{care.name}</Text>
                 </TouchableOpacity>
             ))}
         </View>
     );
 };
+
 const styles = StyleSheet.create({
     CaresContainer: {
         display: 'flex',
