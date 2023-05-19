@@ -6,8 +6,9 @@ import externalStyle from "../../../style/externalStyle";
 const Missing_Finding = ({navigation}) => {
     return (
         <View style={[styles.container, externalStyle.bg]}>
-            <Findings type={"finding"} onPress={() => navigation.navigate("FindingsListPage")}/>
-            <Findings type={"missing"} onPress={() => navigation.navigate("FindingsListPage")}/>
+            <Findings type={"finding"} onPress={(type) => navigation.navigate("FindingsListPage", {type: type})}/>
+            <Findings type={"missing"} onPress={(type) => navigation.navigate("FindingsListPage", {type: type})}/>
+
         </View>
     );
 };

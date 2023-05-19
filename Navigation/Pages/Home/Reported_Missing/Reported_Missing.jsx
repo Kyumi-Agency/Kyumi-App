@@ -1,45 +1,39 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { fetchAnimals } from "../../api";
+import AnimalCard from "../../Missing_Finding/FindingsList/AnimalCard";
 
-const Reported_Missing = ({ onPress }) => {
-    const newData = [
-        {
-            id: '1',
-            image:
-                'https://img.20mn.fr/2c2xoZqdQhu84Dmhb8ci9Sk/1200x768_le-berger-australien-est-le-chien-prefere-des-francais',
-        },
-        {
-            id: '2',
-            image:
-                'https://lemeilleurpourmonlapin.fr/wp-content/uploads/2022/01/lapin-belier-nain.jpg',
-        },
-        {
-            id: '3',
-            image: 'https://images.ladepeche.fr/api/v1/images/view/63600c1986a82e7a5a29be4b/large/image.jpg?v=2',
-        },
-    ];
+const Reported_Missing = ({ navigation }) => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetchAnimals("missing") // Vous pouvez remplacer "adoption" par le type approprié
+            .then((data) => {
+                const animals = data.flatMap(animalGroup => Object.values(animalGroup).slice(1)).flat();
+                setData(animals);
+            });
+    }, []);
+
+    const handlePress = (animal) => {
+        navigation.navigate('AnimalDetailsPage', { animal });
+    };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Reported Missing</Text>
-            <FlatList
-                data={newData}
-                keyExtractor={(item) => item.id}
-                horizontal
-                renderItem={({ item }) => (
-                    <TouchableOpacity
-                        style={styles.itemContainer}
-                        onPress={() => onPress(item.id)}
-                        key={item.id}
-                    >
-                        <Image
-                            source={{ uri: item.image }}
-                            style={{ width: '100%', height: '100%', borderRadius: 8 }}
-                            resizeMode="cover"
+            <Text style={styles.title}>Animaux perdus</Text>
+            <ScrollView horizontal style={styles.scrollContainer}>
+                {data.map((animal, index) => (
+                    <View key={index} style={styles.cardContainer}>
+                        <AnimalCard
+                            onPress={() => handlePress(animal)}
+                            refuge={animal.refuge}
+                            image={animal.galerie[0]}
+                            name={animal.nom}
+                            race={animal.race}
                         />
-                    </TouchableOpacity>
-                )}
-            />
+                    </View>
+                ))}
+            </ScrollView>
         </View>
     );
 };
@@ -53,20 +47,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 10,
     },
-    itemContainer: {
-        width: 150,
-        height:350,
-        marginHorizontal: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        borderRadius: 8,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+    scrollContainer: {
+        flexDirection: 'row',
     },
+    cardContainer: {
+        margin: 10,  // Ceci est la marge que vous pouvez ajuster pour espacer vos cartes
+    }
 });
 
-export default Reported_Missing
+export default Reported_Missing;

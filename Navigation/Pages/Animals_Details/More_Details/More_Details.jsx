@@ -1,14 +1,28 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const More_Details = () => {
+const More_Details = ({animal}) => {
     return (
         <View style={styles.container}>
             <View style={styles.moreDetails}>
                 <Text style={styles.moreDetailsTitle}>More details</Text>
-                <Text style={styles.moreDetailsTxt}>Color: <Text style={styles.moreDetailsTextClassic}>Brown</Text></Text>
-                <Text style={styles.moreDetailsTxt}>Weight: <Text style={styles.moreDetailsTextClassic}>2.5 kg</Text></Text>
-                <Text style={styles.moreDetailsTxt}>Vaccinated: <Text style={styles.moreDetailsTextClassic}>Yes</Text></Text>
+                <Text style={styles.moreDetailsTxt}>Color:
+                    <Text style={styles.moreDetailsTextClassic}>
+                        {animal.couleur.length > 1 ? animal.couleur.map((couleur, index) => {
+                            if (index === animal.couleur.length - 1) {
+                                return couleur;
+                            } else {
+                                return couleur + ', ';
+                            }
+                        } ) : animal.couleur[0]}
+                    </Text>
+                </Text>
+                <Text style={styles.moreDetailsTxt}>Poid: <Text style={styles.moreDetailsTextClassic}>{animal.poid} kg</Text></Text>
+                <Text style={styles.moreDetailsTxt}>Vaccinated:
+                    <Text style={styles.moreDetailsTextClassic}>
+                        {animal.vacciné ? 'Oui' : 'Non'}
+                    </Text>
+                </Text>
             </View>
         </View>
     );
