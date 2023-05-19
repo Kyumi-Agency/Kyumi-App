@@ -3,14 +3,14 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 
 const img = "https://f.maformation.fr/edito/sites/3/2022/08/animaux.jpeg";
 
-const Published = () => {
+const Published = ({refuge}) => {
     return (
         <View style={styles.container}>
             <View style={styles.publishedBy}>
                 <Image source={{uri: img}} style={styles.publishedByImage} />
                 <View style={styles.publishedByText}>
                     <Text style={styles.publishedByTextFirstSpan}>Published by</Text>
-                    <Text>Refuge de l'espoire</Text>
+                    <Text>{refuge}</Text>
                 </View>
             </View>
         </View>

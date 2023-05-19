@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 
-const Description_Details = () => {
+const Description_Details = ({animal}) => {
     const [showMore, setShowMore] = useState(false);
     const toggleShowMore = () => {
         setShowMore(!showMore);
@@ -15,7 +15,7 @@ const Description_Details = () => {
         <View style={styles.container}>
             <View style={styles.profile}>
                     <View style={styles.name}>
-                        <Text style={styles.nameTxt}>Jean</Text>
+                        <Text style={styles.nameTxt}>{animal.nom}</Text>
                         <Image source={{uri: 'https://static.thenounproject.com/png/3682928-200.png'}} style={styles.nameImg} />
                         <View style={styles.likeContainer}>
                             <TouchableOpacity onPress={handleLikePress}>
@@ -26,16 +26,13 @@ const Description_Details = () => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <Text style={styles.txt}>2 ans</Text>
-                    <Text style={styles.txt}>Race</Text>
+                    <Text style={styles.txt}>{animal.age} ans</Text>
+                    <Text style={styles.txt}>Race : {animal.race}</Text>
 
             </View>
             <View style={styles.description}>
                 <Text numberOfLines={showMore ? undefined : 4}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc
-                    nisl lacinia nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget ultricies tincidunt, nunc
-                    nisl lacinia nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget ultricies tincidunt, nunc
-                    nisl lacinia nisl, nec ultricies nunc nisl vel mauris. Sed tincidunt, nisl eget
+                    {animal.description}
                 </Text>
                 {!showMore && (
                     <TouchableOpacity onPress={toggleShowMore} style={styles.seeMoreButton}>

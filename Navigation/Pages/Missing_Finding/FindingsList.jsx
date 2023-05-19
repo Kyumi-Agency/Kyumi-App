@@ -3,21 +3,21 @@ import {Text, View, ScrollView, StyleSheet, Pressable, Image, TouchableOpacity, 
 import AnimalCard from "./FindingsList/AnimalCard";
 import SearchBar from "./FindingsList/SearchBar";
 import externalStyle from "../../../style/externalStyle";
+import {fetchAnimals} from "../api";
 
-const FindingsList = ({navigation}) => {
-    // const listType = type === "missing" ? `https://kyumibdd.osc-fr1.scalingo.io/api/get/findings/adoption` : `https://kyumibdd.osc-fr1.scalingo.io/api/get/findings/adoption`;
-    const listType = `https://kyumibdd.osc-fr1.scalingo.io/api/get/findings/adoption`;
+const FindingsList = ({navigation, route}) => {
+    const { type } = route.params;
+    const listType = type === "missing" ? `https://kyumibdd.osc-fr1.scalingo.io/api/get/findings/disparition` : `https://kyumibdd.osc-fr1.scalingo.io/api/get/findings/adoption`;
     const [species, setSpecies] = useState([])
     const [selectedAnimal, setSelectedAnimal] = useState(1);
     const [queryAnimal, setQueryAnimal] = useState('chien');
     const [searchText, setSearchText] = React.useState('');
 
     useEffect(() => {
-        fetch(listType)
-            .then((response) => response.json())
-            .then((data) => setSpecies(data))
-            .catch((error) => console.error(error))
+        fetchAnimals(type)
+            .then((data) => setSpecies(data));
     }, [queryAnimal]);
+
 
     const handleAnimalPress = () => {
         // selectedAnimal === 1 ? setSelectedAnimal(2) : setSelectedAnimal(1);
@@ -28,6 +28,9 @@ const FindingsList = ({navigation}) => {
             setSelectedAnimal(1)
             setQueryAnimal('chien')
         }
+    };
+    const handlePress = (animal) => {
+        navigation.navigate('AnimalDetailsPage', {animal});
     };
 
     function handleSearchTextChange(value) {
@@ -90,7 +93,7 @@ const FindingsList = ({navigation}) => {
                         <AnimalCard
                             style={styles.animalCard}
                             key={index}
-                            onPress={() => navigation.navigate("AnimalDetailsPage")}
+                            onPress={() => handlePress(animal)}
                             refuge={animal.refuge}
                             image={animal.galerie[0]}
                             name={animal.nom}

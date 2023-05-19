@@ -37,15 +37,8 @@ const Findings = ({onPress, type}) => {
     }, [tapCount]);
 
     const tap = () => {
-        // const now = Date.now();
-        // const DELAY = 500;
-        // if (lastTap.current && now - lastTap.current < DELAY) {
-        //     onPress();
-        // } else {
-        //     lastTap.current = now;
-        // }
         setTapCount(!tapCount);
-        onPress();
+        onPress(type);
     };
 
     const imageScale = animatedValue.interpolate({
@@ -204,12 +197,10 @@ const styles = StyleSheet.create({
     modalText: {
         color: 'white',
         zIndex: 1,
+        //centrer l'image
         position: 'absolute',
         top: '70%',
-        left: '25%',
-        marginTop: -10,
-        marginLeft: -50,
-        textAlign: 'center',
+        left: '22%',
         fontSize: 30,
     },
     clickme: {
@@ -217,7 +208,7 @@ const styles = StyleSheet.create({
         zIndex: 1,
         position: 'absolute',
         top: '80%',
-        left: '45%',
+        left: '50%',
         marginTop: -10,
         marginLeft: -50,
         textAlign: 'center',
