@@ -98,6 +98,7 @@ const Map = () => {
                     placeholder="Email"
                     placeholderTextColor="#003f5c"
                     onChangeText={setEmail}
+                    keyboardType={"email-address"}
                 />
             </View>
             <View style={styles.inputView}>
