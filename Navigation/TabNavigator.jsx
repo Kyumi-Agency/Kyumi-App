@@ -5,12 +5,12 @@ import {Ionicons} from "@expo/vector-icons";
 import Home from "./Pages/Home/Home";
 import Conseils from "./Pages/Conseils/Conseils";
 import Map from "./Pages/Map/Map";
+import Profile from "./Pages/Profile/Profile";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import ConseilsStack from "./Stacks/ConseilsStack";
 import MissingFindingStack from "./Stacks/MissingFindingStack";
 import MapStack from "./Stacks/MapStack";
 import HomeStack from "./Stacks/HomeStack";
-
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = () => {
